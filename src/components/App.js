@@ -81,6 +81,17 @@ class App extends Component {
       this.fetchData();
     }
   }, 500);
+  shortenTitleOrDesc = (words, numbers) => {
+    if (words !== undefined) {
+      words = words.split(" ");
+      if (words.length > numbers) {
+        words = words.slice(0, numbers);
+        words.push("...");
+      }
+      words = words.join(" ");
+    }
+    return words;
+  };
   componentDidUpdate(prevProps, prevState) {
     if (this.state.books !== prevState.books) {
       if (this.state.totalItems > 0) {
@@ -88,25 +99,9 @@ class App extends Component {
         const booksList = [];
         books.forEach((book, index) => {
           const id = book.id;
-          let title = book.volumeInfo.title;
-          if (title !== undefined) {
-            title = title.split(" ");
-            if (title.length > 7) {
-              title = title.slice(0, 7);
-              title.push("...");
-            }
-            title = title.join(" ");
-          }
+          let title = this.shortenTitleOrDesc(book.volumeInfo.title, 7);
           const image = `http://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-          let description = book.volumeInfo.description;
-          if (description !== undefined) {
-            description = description.split(" ");
-            if (description.length > 15) {
-              description = description.slice(0, 15);
-              description.push("...");
-            }
-            description = description.join(" ");
-          }
+          let description = this.shortenTitleOrDesc(book.volumeInfo.description,15);
           const element = (
             <Book key={index}>
               <img src={image} alt={title} />
