@@ -100,10 +100,14 @@ class App extends Component {
           const id = book.id;
           let title = this.shortenTitleOrDesc(book.volumeInfo.title, 7);
           const image = `http://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+<<<<<<< HEAD
           let description = this.shortenTitleOrDesc(
             book.volumeInfo.description,
             15
           );
+=======
+          let description = this.shortenTitleOrDesc(book.volumeInfo.description,15);
+>>>>>>> 573fc5409749de2b243582d5c2945cb880c12c84
           const element = (
             <Book key={index}>
               <img src={image} alt={title} />
