@@ -80,7 +80,7 @@ class App extends Component {
       this.fetchData();
     }
   }, 500);
-  shortenTitleOrDescription = (words, numbers) => {
+  shortenTitleOrDesc = (words, numbers) => {
     if (words !== undefined) {
       words = words.split(" ");
       if (words.length > numbers) {
@@ -98,9 +98,9 @@ class App extends Component {
         const booksList = [];
         books.forEach((book, index) => {
           const id = book.id;
-          let title = this.shortenTitleOrDescription(book.volumeInfo.title, 7);
+          let title = this.shortenTitleOrDesc(book.volumeInfo.title, 7);
           const image = `http://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-          let description = this.shortenTitleOrDescription(
+          let description = this.shortenTitleOrDesc(
             book.volumeInfo.description,
             15
           );
