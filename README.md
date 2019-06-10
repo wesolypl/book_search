@@ -1,4 +1,4 @@
-Live preview: https://nervous-meninsky-1c46bb.netlify.com/
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
